@@ -4,9 +4,6 @@ const path = require("path");
 const mongoose = require("mongoose")
 
 const Product = require("./models/product");
-const { get } = require("http");
-const e = require("express");
-
 
 mongoose.connect('mongodb://localhost:27017/groceryStore')
     .then(() => {
