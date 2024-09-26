@@ -56,10 +56,13 @@ app.get("/products", async (req, res) =>{
 
 app.get("/productsearch", async (req, res) => {
     const {name} = req.query;
-
+    let empty = true;
     try{
         const products = await Product.find({name : { $regex: name, "$options": "i"}})
-        res.render("grocerystore/search", { products })
+        if(products.length != 0){
+            empty = false;
+        }
+        res.render("grocerystore/search", { products, empty })
     }catch(e){
         res.redirect("/404")
     }
@@ -77,7 +80,7 @@ app.get("/products/:id", async (req, res) => {
 })
 
 app.get("/404", (req, res) => {
-    res.send("404")
+    res.status(404).render("grocerystore/404")
 })
 
 app.get("/*", (req, res) => {

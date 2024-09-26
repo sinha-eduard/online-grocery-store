@@ -1,7 +1,12 @@
 <% layout('./layouts/boilerplate') %>
 <h1 class="text-3xl">Search Results</h1>
+
+<% if(empty){ %>
+  <h2>Sorry, we couldnt find what you are looking for</h2>
+<%  }else {%>
 <ul>
   <% for(let product of products){ %>
   <li><a href="/products/<%=product.id%>"><%= product.name %></a></li>
   <% }%>
 </ul>
+<% } %>
