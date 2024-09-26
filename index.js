@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const ejsMate = require("ejs-mate");
 
 const Product = require("./models/product");
 
@@ -14,22 +15,24 @@ mongoose.connect('mongodb://localhost:27017/groceryStore')
         console.log(e)
     });
 
-
-app.set("views", path.join(__dirname, "public/views"));
+app.engine("ejs", ejsMate)
 app.set("view engine", "ejs");
+app.set('views', "./public/views");
+app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({extended: true}))
 
 app.get("/home", async (req, res) =>{
     const {category} = req.query;
     if(category){
         if(category == "fruit" || category == "vegetable" ||category == "baked" || category == "dairy"){
             const products = await Product.find({category : category})
-            res.render("category", { products, category })
+            res.render("grocerystore/category", { products, category })
         } else {
             res.redirect("/404")
         }
     } else{
         const products = await Product.find({})
-    res.render('home', {products})
+    res.render('grocerystore/home', {products})
     }
 })
 
@@ -42,7 +45,7 @@ app.get("/products", async (req, res) =>{
     if(category){
         if(category == "fruit" || category == "vegetable" ||category == "baked" || category == "dairy"){
             const products = await Product.find({category : category})
-            res.render("category", { products, category })
+            res.render("grocerystore/category", { products, category })
         } else {
             res.redirect("/404")
         }
@@ -55,7 +58,7 @@ app.get("/products/:id", async (req, res) => {
     const {id} = req.params;
     try{
         const product = await Product.findById(id)
-        res.render("product", { product })
+        res.render("grocerystore/show", { product })
     }catch(e){
         res.redirect("/404")
     }

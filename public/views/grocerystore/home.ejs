@@ -1,0 +1,18 @@
+<% layout('./layouts/boilerplate') %>
+<h1 class="text-3xl">All Products!</h1>
+<ul>
+  <% for(let product of products){ %>
+  <li><a href="/products/<%=product.id%>"><%= product.name %></a></li>
+  <% }%>
+</ul>
+
+<p>Sort by Category</p>
+<form action="" id="cat-select">
+  <select name="category" id="category">
+    <option value="fruit">Fruit</option>
+    <option value="vegetable">Vegetable</option>
+    <option value="dairy">Dairy</option>
+    <option value="baked">Baked</option>
+  </select>
+  <button>Search</button>
+</form>
