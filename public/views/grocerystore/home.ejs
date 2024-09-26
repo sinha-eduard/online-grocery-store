@@ -1,12 +1,70 @@
 <% layout('./layouts/boilerplate') %>
-<h1 class="text-3xl">All Products!</h1>
-<ul>
-  <% for(let product of products){ %>
-  <li><a href="/products/<%=product.id%>"><%= product.name %></a></li>
-  <% }%>
-</ul>
 
-<p>Sort by Category</p>
+
+
+
+
+
+
+
+
+<h1 class="text-3xl mb-4 mt-4">Shop By Category</h1>
+
+<section id="category-section" class="mt-4 flex flex-wrap justify-around w-2/3 gap-6">
+  <div id="fruits-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=600" 
+    alt="fruits" class="mask mask-squircle mt-4 w-full h-full">
+    <a href="/products?category=fruit" class="btn btn-accent mt-2 text-xl">Fruits</a>
+  </div>
+
+  <div id="vegetable-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=600" 
+    alt="vegetable" class="mask mask-squircle mt-4 w-full h-full">
+    <a href="/products?category=vegetable" class="btn btn-accent mt-2 text-xl">Vegetables</a>
+  </div>
+
+  <div id="dairy-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <img src="https://media.istockphoto.com/id/910881428/photo/dairy-products-shot-on-rustic-wooden-table.jpg?b=1&s=612x612&w=0&k=20&c=kv9D6bdGF3mQz24nxRkc1ADkc0VigdW24yOFvYXLnpA=" 
+    alt="dairy" class="mask mask-squircle mt-4 w-full h-full">
+    <a href="/products?category=dairy" class="btn btn-accent mt-2 text-xl">Dairy</a> 
+  </div>
+
+  <div id="baked-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <img src="https://images.pexels.com/photos/960662/pexels-photo-960662.jpeg?auto=compress&cs=tinysrgb&w=600" 
+    alt="baked" class="mask mask-squircle mt-4 w-full h-full">
+    <a href="/products?category=baked" class="btn btn-accent mt-2 text-xl">Baked</a>
+  </div>
+
+  <div id="meat-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <img src="https://images.pexels.com/photos/65175/pexels-photo-65175.jpeg?auto=compress&cs=tinysrgb&w=600" 
+    alt="baked" class="mask mask-squircle mt-4 w-full h-full">
+    <a href="/products?category=fruit" class="btn btn-accent mt-2 text-xl">Meats</a>
+  </div>
+
+  <div id="sea-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <img src="https://images.pexels.com/photos/229789/pexels-photo-229789.jpeg?auto=compress&cs=tinysrgb&w=600" 
+    alt="baked" class="mask mask-squircle mt-4 w-full h-full">
+    <a href="/products?category=fruit" class="btn btn-accent mt-2 text-xl">Sea Food</a>
+  </div>
+</section>
+
+<section id="coupon" class="flex w-2/3 flex-col mt-16 mb-16"></div>
+  <div class="card bg-primary rounded-box grid h-20 place-items-center">
+      <p class="text-white text-xl p-2 text-center">Use 60GROCERY for $15 off your order</p>
+  </div>
+</section>
+
+<section id="all-products" class="w-2/3">
+  <h2 class="text-center mb-4 text-3xl">All Products</h2>
+
+  <ul class="carousel carousel-end rounded-box flex flex-wrap gap-6 justify-around">
+    <% for(let product of products){ %>
+    <li class="carousel-item btn w-1/6"><a href="/products/<%=product.id%>"><%= product.name %></a></li>
+    <% }%>
+  </ul>
+</section>
+
+<!-- <p>Sort by Category</p>
 <form action="" id="cat-select">
   <select name="category" id="category">
     <option value="fruit">Fruit</option>
@@ -15,4 +73,4 @@
     <option value="baked">Baked</option>
   </select>
   <button>Search</button>
-</form>
+</form> -->
