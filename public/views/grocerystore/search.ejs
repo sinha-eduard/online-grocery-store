@@ -1,0 +1,7 @@
+<% layout('./layouts/boilerplate') %>
+<h1 class="text-3xl">Search Results</h1>
+<ul>
+  <% for(let product of products){ %>
+  <li><a href="/products/<%=product.id%>"><%= product.name %></a></li>
+  <% }%>
+</ul>

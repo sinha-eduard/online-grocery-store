@@ -54,6 +54,18 @@ app.get("/products", async (req, res) =>{
     }
 })
 
+app.get("/productsearch", async (req, res) => {
+    const {name} = req.query;
+
+    try{
+        const products = await Product.find({name : { $regex: name, "$options": "i"}})
+        res.render("grocerystore/search", { products })
+    }catch(e){
+        res.redirect("/404")
+    }
+})
+
+
 app.get("/products/:id", async (req, res) => {
     const {id} = req.params;
     try{
