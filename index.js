@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended: true}))
 app.get("/home", async (req, res) =>{
     const {category} = req.query;
     if(category){
-        if(category == "fruit" || category == "vegetable" ||category == "baked" || category == "dairy"){
+        if(category == "fruit" || category == "vegetable" ||category == "baked" || category == "dairy" || category == "meat" || category == "seafood"){
             const products = await Product.find({category : category})
             res.render("grocerystore/category", { products, category })
         } else {
@@ -43,7 +43,7 @@ app.get("/", async (req, res) =>{
 app.get("/products", async (req, res) =>{
     const {category} = req.query;
     if(category){
-        if(category == "fruit" || category == "vegetable" ||category == "baked" || category == "dairy"){
+        if(category == "fruit" || category == "vegetable" || category == "baked" || category == "dairy" || category == "meat" || category == "seafood"){
             const products = await Product.find({category : category})
             res.render("grocerystore/category", { products, category })
         } else {
@@ -62,7 +62,7 @@ app.get("/productsearch", async (req, res) => {
         if(products.length != 0){
             empty = false;
         }
-        res.render("grocerystore/search", { products, empty })
+        res.render("grocerystore/search", { products, empty, name })
     }catch(e){
         res.redirect("/404")
     }
@@ -73,7 +73,8 @@ app.get("/products/:id", async (req, res) => {
     const {id} = req.params;
     try{
         const product = await Product.findById(id)
-        res.render("grocerystore/show", { product })
+        const category = await Product.find({category:product.category})
+        res.render("grocerystore/show", { product, category })
     }catch(e){
         res.redirect("/404")
     }

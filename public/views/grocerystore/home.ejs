@@ -12,39 +12,53 @@
 
 <section id="category-section" class="mt-4 flex flex-wrap justify-around w-2/3 gap-6">
   <div id="fruits-card" class="card bg-base-100 max-w-80 shadow-xl">
-    <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=600" 
-    alt="fruits" class="mask mask-squircle mt-4 w-full h-full">
-    <a href="/products?category=fruit" class="btn btn-accent mt-2 text-xl">Fruits</a>
+    <a href="/products?category=fruit">
+      <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=600" 
+      alt="fruits" class="mask mask-squircle mt-4 h-8/10">
+      <h2 class="text-center text-2xl p-2">Fuirts</h2>
+    </a>
   </div>
 
   <div id="vegetable-card" class="card bg-base-100 max-w-80 shadow-xl">
-    <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=600" 
-    alt="vegetable" class="mask mask-squircle mt-4 w-full h-full">
-    <a href="/products?category=vegetable" class="btn btn-accent mt-2 text-xl">Vegetables</a>
+    <a href="/products?category=vegetable">
+      
+      <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=600" 
+      alt="vegetable" class="mask mask-squircle mt-4 h-8/10">
+    
+      <h2 class="text-center text-2xl p-2">Vegetables</h2>
+  </a>
   </div>
 
   <div id="dairy-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <a href="/products?category=dairy" >
     <img src="https://media.istockphoto.com/id/910881428/photo/dairy-products-shot-on-rustic-wooden-table.jpg?b=1&s=612x612&w=0&k=20&c=kv9D6bdGF3mQz24nxRkc1ADkc0VigdW24yOFvYXLnpA=" 
-    alt="dairy" class="mask mask-squircle mt-4 w-full h-full">
-    <a href="/products?category=dairy" class="btn btn-accent mt-2 text-xl">Dairy</a> 
+    alt="dairy" class="mask mask-squircle mt-4 h-8/10">
+    <h2 class="text-center text-2xl p-2">Dairy</h2>
+  </a> 
   </div>
 
   <div id="baked-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <a href="/products?category=baked" >
     <img src="https://images.pexels.com/photos/960662/pexels-photo-960662.jpeg?auto=compress&cs=tinysrgb&w=600" 
-    alt="baked" class="mask mask-squircle mt-4 w-full h-full">
-    <a href="/products?category=baked" class="btn btn-accent mt-2 text-xl">Baked</a>
+    alt="baked" class="mask mask-squircle mt-4 h-8/10">
+    <h2 class="text-center text-2xl p-2">Baked</h2>
+    </a>
   </div>
 
   <div id="meat-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <a href="/products?category=meat">
     <img src="https://images.pexels.com/photos/65175/pexels-photo-65175.jpeg?auto=compress&cs=tinysrgb&w=600" 
-    alt="baked" class="mask mask-squircle mt-4 w-full h-full">
-    <a href="/products?category=fruit" class="btn btn-accent mt-2 text-xl">Meats</a>
+    alt="baked" class="mask mask-squircle mt-4 h-8/10">
+    <h2 class="text-center text-2xl p-2">Meats</h2>
+    </a>
   </div>
 
   <div id="sea-card" class="card bg-base-100 max-w-80 shadow-xl">
+    <a href="/products?category=seafood">
     <img src="https://images.pexels.com/photos/229789/pexels-photo-229789.jpeg?auto=compress&cs=tinysrgb&w=600" 
-    alt="baked" class="mask mask-squircle mt-4 w-full h-full">
-    <a href="/products?category=fruit" class="btn btn-accent mt-2 text-xl">Sea Food</a>
+    alt="baked" class="mask mask-squircle mt-4 h-8/10">
+    <h2 class="text-center text-2xl p-2">Sea Food</h2>
+    </a>
   </div>
 </section>
 
@@ -56,10 +70,30 @@
 
 <section id="all-products" class="w-2/3">
   <h2 class="text-center mb-4 text-3xl">All Products</h2>
-
-  <ul class="carousel carousel-end rounded-box flex flex-wrap gap-6 justify-around">
+  <ul class="carousel carousel-end rounded-box flex flex-wrap gap-3 justify-start">
     <% for(let product of products){ %>
-    <li class="carousel-item btn w-1/6"><a href="/products/<%=product.id%>"><%= product.name %></a></li>
+    <li class="carousel-item">
+      
+      <div class="card card-compact bg-base-100 w-56">
+        <a href="/products/<%=product.id%>">
+        <figure>
+          <img
+            src="<%=product.img %>"
+            alt="<%= product.name %>" />
+        </figure>
+      </a>
+        <div class="card-body">
+          <div class="card-actions justify-start">
+            <button class="btn btn-primary rounded-full text-white"> + Add to Cart</button>
+          </div>
+          <a href="/products/<%=product.id%>">
+          <h2 class="card-title">$<%= product.price %></h2>
+          <p><%= product.name %></p>
+          <p>Category: <%= product.category %></p>
+        </a>
+        </div>
+      </div>
+    </li>
     <% }%>
   </ul>
 </section>

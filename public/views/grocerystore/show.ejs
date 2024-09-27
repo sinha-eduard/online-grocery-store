@@ -1,9 +1,117 @@
 <% layout('./layouts/boilerplate') %>
-<h1 class="text-3xl"><%= product.name %></h1>
-<ul>
-    <li>Price: <%= product.price %></li>
-    <li>Category: <a href="/products?category=<%= product.category %>"><%= product.category %></a></li>
-</ul>
-<a href="/home">Back to All</a>
 
+<p class="mt-4 w-3/5 portrait:w-full pl-2">
+  <a class="link link-hover" href="/home">Home</a> >
+  <a class="link link-hover" href="/products?category=<%=product.category%>"
+    ><%=product.category.charAt(0).toUpperCase() +
+    product.category.slice(1)%></a
+  >
+  > <%= product.name %>
+</p>
 
+<section id="show-display" class="flex flex-row justify-center flex-wrap gap-3">
+  <div class="flex flex-col w-2/5 portrait:w-full">
+    <div id="img" class="w-full portrait:w-8/10">
+      <img src="<%= product.img %>" alt="<%= product.name %>" />
+    </div>
+    <div id="desc" class="justify-self-start mt-4 portrait:hidden">
+      <h2 class="text-2xl font-bold p-2">About this item</h2>
+      <hr />
+      <p class="p-2"><%=product.des%></p>
+    </div>
+
+    <section id="customer-also-bought" class="mt-8 portrait:hidden">
+      <h2 class="text-left mb-4 text-3xl">Customers Also Bought</h2>
+      <ul
+        class="carousel carousel-end rounded-box flex flex-wrap gap-3 justify-start"
+      >
+        <% for(let product of category){ %>
+        <li class="carousel-item">
+          <div class="card card-compact bg-base-100 w-56">
+            <a href="/products/<%=product.id%>">
+              <figure>
+                <img src="<%=product.img %>" alt="<%= product.name %>" />
+              </figure>
+            </a>
+            <div class="card-body">
+              <div class="card-actions justify-start">
+                <button class="btn btn-primary rounded-full text-white">
+                  + Add to Cart
+                </button>
+              </div>
+              <a href="/products/<%=product.id%>">
+                <h2 class="card-title">$<%= product.price %></h2>
+                <p><%= product.name %></p>
+                <p>Category: <%= product.category %></p>
+              </a>
+            </div>
+          </div>
+        </li>
+        <% }%>
+      </ul>
+    </section>
+  </div>
+
+  <div id="info" class="mt-36 portrait:mt-4">
+    <div class="card bg-base-100 w-96 shadow-xl sticky top-24">
+      <div class="card-body">
+        <h2 class="card-title"><%= product.name %></h2>
+        <p>Price: $<%= product.price %></p>
+        <p>
+          Category:
+          <a href="/products?category=<%= product.category %>"
+            ><%= product.category %></a
+          >
+        </p>
+        <div class="card-actions justify-start">
+          <button class="btn btn-primary rounded-full text-white">
+            + Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="desc"
+    class="justify-self-start p-2 flex-col hidden portrait:inline-flex"
+  >
+    <h2 class="text-2xl font-bold p-2">About this item</h2>
+    <hr />
+    <p class="p-2"><%=product.des%></p>
+  </div>
+</section>
+
+<section
+  id="customer-also-bought"
+  class="mt-8 hidden portrait:inline-flex flex-col"
+>
+  <h2 class="text-center mb-4 text-3xl">Customers Also Bought</h2>
+  <ul
+    class="carousel carousel-end rounded-box flex flex-wrap gap-3 justify-center"
+  >
+    <% for(let product of category){ %>
+    <li class="carousel-item">
+      <div class="card card-compact bg-base-100 w-56">
+        <a href="/products/<%=product.id%>">
+          <figure>
+            <img src="<%=product.img %>" alt="<%= product.name %>" />
+          </figure>
+        </a>
+        <div class="card-body">
+          <div class="card-actions justify-start">
+            <button class="btn btn-primary rounded-full text-white">
+              + Add to Cart
+            </button>
+          </div>
+          <a href="/products/<%=product.id%>">
+            <h2 class="card-title">$<%= product.price %></h2>
+            <p><%= product.name %></p>
+            <p>Category: <%= product.category %></p>
+          </a>
+        </div>
+      </div>
+    </li>
+    <% }%>
+  </ul>
+</section>

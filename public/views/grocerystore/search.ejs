@@ -1,12 +1,40 @@
 <% layout('./layouts/boilerplate') %>
-<h1 class="text-3xl">Search Results</h1>
+<div class="w-3/5 portrait:w-full ml-4 mt-4">
+  <p ><a class="link link-hover" href="/home">Home</a> 
+    > <%=name%></p>
+  </div>
+
+<h1 class="text-3xl mt-4 mb-4">Search Results</h1>
 
 <% if(empty){ %>
   <h2>Sorry, we couldnt find what you are looking for</h2>
 <%  }else {%>
-<ul>
-  <% for(let product of products){ %>
-  <li><a href="/products/<%=product.id%>"><%= product.name %></a></li>
-  <% }%>
-</ul>
+  <section id="search-products" class="w-3/5">
+    <ul class="carousel carousel-end rounded-box flex flex-wrap gap-3 justify-start">
+      <% for(let product of products){ %>
+      <li class="carousel-item">
+        
+        <div class="card card-compact bg-base-100 w-56">
+          <a href="/products/<%=product.id%>">
+          <figure>
+            <img
+              src="<%=product.img %>"
+              alt="<%= product.name %>" />
+          </figure>
+        </a>
+          <div class="card-body">
+            <div class="card-actions justify-start">
+              <button class="btn btn-primary rounded-full text-white"> + Add to Cart</button>
+            </div>
+            <a href="/products/<%=product.id%>">
+            <h2 class="card-title">$<%= product.price %></h2>
+            <p><%= product.name %></p>
+            <p>Category: <%= product.category %></p>
+          </a>
+          </div>
+        </div>
+      </li>
+      <% }%>
+    </ul>
+  </section>
 <% } %>

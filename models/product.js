@@ -17,6 +17,10 @@ const productSchema = new mongoose.Schema({
     },
     img:{
         type:String
+    },
+    des:{
+        type:String,
+        default: "FRESHNESS GUARANTEED You want the freshest for your family and so do we. We've trained our Associates to pick the best and freshest products to meet your expectations. Satisfaction guaranteed* or your money back! *Terms and conditions apply."
     }
 })
 
