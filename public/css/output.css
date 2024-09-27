@@ -1797,6 +1797,10 @@ html {
   top: 6rem;
 }
 
+.top-36 {
+  top: 9rem;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -1811,6 +1815,10 @@ html {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
 }
 
 .mt-16 {
@@ -1833,16 +1841,12 @@ html {
   margin-top: 2rem;
 }
 
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
-.ml-4 {
-  margin-left: 1rem;
-}
-
 .inline-block {
   display: inline-block;
+}
+
+.inline {
+  display: inline;
 }
 
 .flex {
@@ -1907,10 +1911,6 @@ html {
 
 .w-full {
   width: 100%;
-}
-
-.w-4\/5 {
-  width: 80%;
 }
 
 .max-w-80 {
