@@ -73,7 +73,6 @@
   <ul class="carousel carousel-end rounded-box flex flex-wrap gap-3 justify-start">
     <% for(let product of products){ %>
     <li class="carousel-item">
-      
       <div class="card card-compact bg-base-100 w-56">
         <a href="/products/<%=product.id%>">
         <figure>
@@ -84,12 +83,19 @@
       </a>
         <div class="card-body">
           <div class="card-actions justify-start">
-            <button id="add-to-cart-btn" name="<%=product.id%>" class="btn btn-primary rounded-full text-white"> + Add to Cart</button>
+            <button id="add-to-cart-btn" name="<%=product.id%>" 
+              class="btn btn-primary rounded-full text-white"> + Add to Cart</button>
           </div>
           <a href="/products/<%=product.id%>">
           <h2 class="card-title">$<%= product.price %></h2>
-          <p><%= product.name %></p>
-          <p>Category: <%= product.category %></p>
+          <p class="mb-2"><%= product.name %></p>
+          <p class="mb-2"> Category: <%= product.category %></p>
+          <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">
+            <p class="font-bold">Pickup</p>
+          </div>
+          <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">
+            <p class="font-bold">Delivery</p>
+          </div>
         </a>
         </div>
       </div>

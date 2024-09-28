@@ -8,19 +8,25 @@
   <p class="text-base-300 inline text-xl">(0 Items)</p>
 </h2>
 
-<section id="cart" class="w-3/5 flex flex-row justify-center gap-8 portrait:flex-col portrait:w-full">
+<section
+  id="cart"
+  class="w-3/5 flex flex-row justify-center gap-8 portrait:flex-col portrait:w-full"
+>
   <div id="cart-info" class="w-3/5 portrait:w-full portrait:pl-4 portrait:pr-4">
     <div class="card bg-base-100 w-full shadow-xl">
       <div id="cart-body" class="card-body">
-
         <h2 class="text-xl">Empty</h2>
-
       </div>
     </div>
   </div>
 
-  <div id="price-info" class="w-2/5 portrait:w-full portrait:pl-4 portrait:pr-4">
-    <div class="card bg-base-100 w-full shadow-xl landscape:sticky landscape:top-36">
+  <div
+    id="price-info"
+    class="w-2/5 portrait:w-full portrait:pl-4 portrait:pr-4"
+  >
+    <div
+      class="card bg-base-100 w-full shadow-xl landscape:sticky landscape:top-36"
+    >
       <div class="card-body">
         <div class="flex flex-row justify-between">
           <h2 class="font-bold">
@@ -29,6 +35,47 @@
           </h2>
           <h2>$0</h2>
         </div>
+
+        <form id="shipping-form" action="" class="mb-8">
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <span class="label-text">
+                <div
+                  class="badge bg-blue-600/25 text-primary rounded-none block mt-1"
+                >
+                  <p class="font-bold">Pickup (Free)</p>
+                </div>
+              </span>
+              <input
+                id="pickup"
+                type="radio"
+                name="radio-10"
+                class="radio checked:bg-accent"
+                checked="checked"
+              />
+            </label>
+          </div>
+
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <span class="label-text">
+                <div
+                  class="badge bg-blue-600/25 text-primary rounded-none block mt-1"
+                >
+                  <p class="font-bold">Delivery (+$7.99)</p>
+                </div>
+              </span>
+              <input
+                id="delivery"
+                type="radio"
+                name="radio-10"
+                class="radio checked:bg-accent"
+                checked="checked"
+              />
+            </label>
+          </div>
+        </form>
+
         <div class="flex flex-row justify-between mt-4">
           <h2 class="font-bold">Taxes</h2>
           <h2>$0</h2>

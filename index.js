@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 
 const Product = require("./models/product");
+const Cart = require("./models/cartItems");
 
 mongoose.connect('mongodb://localhost:27017/groceryStore')
     .then(() => {
@@ -20,6 +21,7 @@ app.set("view engine", "ejs");
 app.set('views', "./public/views");
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({extended: true}))
+app.use(express.json());
 
 app.get("/home", async (req, res) =>{
     const {category} = req.query;
@@ -78,6 +80,13 @@ app.get("/products/:id", async (req, res) => {
     }catch(e){
         res.redirect("/404")
     }
+})
+
+app.post("/cart", async (req, res) => {
+    console.log(req.body)
+    const item = new Cart(req.body);
+    await item.save();
+    res.redirect("/cart")
 })
 
 app.get("/cart", (req, res) => {

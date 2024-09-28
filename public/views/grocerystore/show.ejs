@@ -41,8 +41,14 @@
               </div>
               <a href="/products/<%=product.id%>">
                 <h2 class="card-title">$<%= product.price %></h2>
-                <p><%= product.name %></p>
-                <p>Category: <%= product.category %></p>
+                <p class="mb-2"><%= product.name %></p>
+          <p class="mb-2"> Category: <%= product.category %></p>
+          <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">
+            <p class="font-bold">Pickup</p>
+          </div>
+          <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">
+            <p class="font-bold">Delivery</p>
+          </div>
               </a>
             </div>
           </div>
@@ -106,8 +112,14 @@
           </div>
           <a href="/products/<%=product.id%>">
             <h2 class="card-title">$<%= product.price %></h2>
-            <p><%= product.name %></p>
-            <p>Category: <%= product.category %></p>
+            <p class="mb-2"><%= product.name %></p>
+          <p class="mb-2"> Category: <%= product.category %></p>
+          <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">
+            <p class="font-bold">Pickup</p>
+          </div>
+          <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">
+            <p class="font-bold">Delivery</p>
+          </div>
           </a>
         </div>
       </div>
