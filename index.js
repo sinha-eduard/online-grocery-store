@@ -80,6 +80,10 @@ app.get("/products/:id", async (req, res) => {
     }
 })
 
+app.get("/cart", (req, res) => {
+    res.render("grocerystore/cart")
+})
+
 app.get("/404", (req, res) => {
     res.status(404).render("grocerystore/404")
 })

@@ -1,0 +1,45 @@
+<% layout('./layouts/boilerplate') %>
+<p class="mt-4 w-3/5 portrait:w-full pl-2">
+  <a class="link link-hover" href="/home">Home</a> > Cart
+</p>
+
+<h2 class="text-2xl font-bold pl-4 w-3/5 mt-4 mb-4">
+  Cart
+  <p class="text-base-300 inline text-xl">(0 Items)</p>
+</h2>
+
+<section id="cart" class="w-3/5 flex flex-row justify-center gap-8 portrait:flex-col portrait:w-full">
+  <div id="cart-info" class="w-3/5 portrait:w-full portrait:pl-4 portrait:pr-4">
+    <div class="card bg-base-100 w-full shadow-xl">
+      <div id="cart-body" class="card-body">
+
+        <h2 class="text-xl">Empty</h2>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="price-info" class="w-2/5 portrait:w-full portrait:pl-4 portrait:pr-4">
+    <div class="card bg-base-100 w-full shadow-xl landscape:sticky landscape:top-36">
+      <div class="card-body">
+        <div class="flex flex-row justify-between">
+          <h2 class="font-bold">
+            Subtotal
+            <p class="text-base-300 inline">(0 Items)</p>
+          </h2>
+          <h2>$0</h2>
+        </div>
+        <div class="flex flex-row justify-between mt-4">
+          <h2 class="font-bold">Taxes</h2>
+          <h2>$0</h2>
+        </div>
+        <hr />
+        <div class="flex flex-row justify-between">
+          <h2 class="font-bold">Total</h2>
+          <h2 class="font-bold">$0</h2>
+        </div>
+        <button class="btn btn-accent rounded-full mt-4">Checkout</button>
+      </div>
+    </div>
+  </div>
+</section>
