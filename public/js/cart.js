@@ -1,17 +1,35 @@
-let addToCartBtn = document.querySelectorAll("#add-to-cart-btn");
+const subtotalItems = document.querySelector("#subtotal-items");
+const totalItems = document.querySelector("#total-items");
 
-const addToCart = async function (id) {
-  return await axios
-    .post("/cart", {
-      id: id,
-      quantity:1
-    })
-    .then((response) => console.log("Success:" + response.data))
-    .then((error) => console.log("Error:" + error));
+const getCart = async function () {
+  try {
+    const results = await axios.get("/cartItems");
+    console.log(results.data[0]._id);
+    return results;
+  } catch (error) {
+    console.log("Error: " + error);
+  }
 };
 
-addToCartBtn.forEach(function async(curBtn) {
-  curBtn.addEventListener("click", async function (e) {
-    await addToCart(curBtn.name);
-  });
+const loadPrice = async function () {
+  try {
+    const cartRes = await axios.get("/cartItems");
+    const productRes = await axios.get("/productData");
+
+ 
+
+    return results;
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+};
+
+window.addEventListener("load", async function () {
+  let items = await getCart();
+  try {
+    subtotalItems.innerText = `(${items.data.length} Items)`;
+    totalItems.innerText = `(${items.data.length} Items)`;
+  } catch (e) {
+    console.log(e);
+  }
 });
