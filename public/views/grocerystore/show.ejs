@@ -40,7 +40,7 @@
                 </button>
               </div>
               <a href="/products/<%=product.id%>">
-                <h2 class="card-title">$<%= product.price %></h2>
+                <h2 class="card-title">$<%= (Math.round(product.price * 100) / 100).toFixed(2) %></h2>
                 <p class="mb-2"><%= product.name %></p>
           <p class="mb-2"> Category: <%= product.category %></p>
           <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">
@@ -62,7 +62,7 @@
     <div class="card bg-base-100 w-96 shadow-xl sticky top-36">
       <div class="card-body">
         <h2 class="card-title"><%= product.name %></h2>
-        <p>Price: $<%= product.price %></p>
+        <p>Price: $<%= (Math.round(product.price * 100) / 100).toFixed(2) %></p>
         <p>
           Category:
           <a href="/products?category=<%= product.category %>"
@@ -111,7 +111,7 @@
             </button>
           </div>
           <a href="/products/<%=product.id%>">
-            <h2 class="card-title">$<%= product.price %></h2>
+            <h2 class="card-title">$<%= (Math.round(product.price * 100) / 100).toFixed(2) %></h2>
             <p class="mb-2"><%= product.name %></p>
           <p class="mb-2"> Category: <%= product.category %></p>
           <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">

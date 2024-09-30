@@ -5,13 +5,13 @@ const totalItems = document.querySelector("#total-items");
 const getCartInfo = async function () {
   try {
     const cart = await axios.get("/cartItems");
-    let info = [0 ,0];
+    let info = [0, 0];
 
     for (let i = 0; i < cart.data.length; i++) {
-        info[0] = info[0] + cart.data[i].quantity;
-        info[1] = info[1] + cart.data[i].quantity * cart.data[i].price
+      info[0] = info[0] + cart.data[i].quantity;
+      info[1] = info[1] + cart.data[i].quantity * cart.data[i].price;
     }
-   
+
     return info;
   } catch (error) {
     console.log("Error: " + error);
@@ -24,8 +24,7 @@ const loadPrice = async function () {
     let price = 0;
 
     for (let i = 0; i < cartRes.data.length; i++) {
-        total = total + cart.data[i].quantity;
-        
+      total = total + cart.data[i].quantity;
     }
 
     return price;
@@ -43,7 +42,4 @@ window.addEventListener("load", async function () {
   } catch (e) {
     console.log(e);
   }
-
-  
-
 });
