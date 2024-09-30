@@ -1857,10 +1857,6 @@ html {
   z-index: 50;
 }
 
-.m-0 {
-  margin: 0px;
-}
-
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -1879,6 +1875,10 @@ html {
 
 .ml-4 {
   margin-left: 1rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
 }
 
 .mt-1 {
@@ -1933,28 +1933,16 @@ html {
   height: 8rem;
 }
 
+.h-36 {
+  height: 9rem;
+}
+
 .h-4 {
   height: 1rem;
 }
 
 .h-5 {
   height: 1.25rem;
-}
-
-.h-8 {
-  height: 2rem;
-}
-
-.h-16 {
-  height: 4rem;
-}
-
-.h-36 {
-  height: 9rem;
-}
-
-.h-full {
-  height: 100%;
 }
 
 .min-h-screen {
@@ -2025,12 +2013,12 @@ html {
   flex-direction: row;
 }
 
-.flex-col {
-  flex-direction: column;
+.flex-row-reverse {
+  flex-direction: row-reverse;
 }
 
-.flex-col-reverse {
-  flex-direction: column-reverse;
+.flex-col {
+  flex-direction: column;
 }
 
 .flex-wrap {
@@ -2053,10 +2041,6 @@ html {
   justify-content: flex-start;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -2077,10 +2061,6 @@ html {
   justify-content: stretch;
 }
 
-.justify-items-end {
-  justify-items: end;
-}
-
 .gap-2 {
   gap: 0.5rem;
 }
@@ -2099,10 +2079,6 @@ html {
 
 .gap-8 {
   gap: 2rem;
-}
-
-.self-end {
-  align-self: flex-end;
 }
 
 .justify-self-start {
@@ -2156,10 +2132,6 @@ html {
   padding: 0.5rem;
 }
 
-.p-0 {
-  padding: 0px;
-}
-
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -2182,16 +2154,16 @@ html {
   padding-right: 0.5rem;
 }
 
-.pl-8 {
-  padding-left: 2rem;
-}
-
-.pt-8 {
-  padding-top: 2rem;
-}
-
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
 .text-left {
@@ -2200,10 +2172,6 @@ html {
 
 .text-center {
   text-align: center;
-}
-
-.text-end {
-  text-align: end;
 }
 
 .text-2xl {
@@ -2221,13 +2189,13 @@ html {
   line-height: 1.75rem;
 }
 
-.font-bold {
-  font-weight: 700;
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
-.text-accent {
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity)));
+.font-bold {
+  font-weight: 700;
 }
 
 .text-base-300 {
@@ -2400,6 +2368,10 @@ html {
     display: none;
   }
 
+  .portrait\:h-20 {
+    height: 5rem;
+  }
+
   .portrait\:w-0 {
     width: 0px;
   }
@@ -2410,6 +2382,10 @@ html {
 
   .portrait\:w-full {
     width: 100%;
+  }
+
+  .portrait\:min-w-20 {
+    min-width: 5rem;
   }
 
   .portrait\:flex-col {
@@ -2430,6 +2406,11 @@ html {
 
   .portrait\:text-left {
     text-align: left;
+  }
+
+  .portrait\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 

@@ -1,7 +1,12 @@
 const subtotalItems = document.querySelector("#subtotal-items");
 const subtotal = document.querySelector("#subtotal");
+const taxes = document.querySelector("#tax");
 const totalItems = document.querySelector("#total-items");
 const cartDisplay = document.querySelector("#cart-body");
+const finTotal = document.querySelector("#final-total");
+const delivery = document.querySelector("#delivery");
+const pickup = document.querySelector("#pickup");
+let numSub = 0;
 
 const getCartInfo = async function () {
   try {
@@ -40,41 +45,87 @@ const loadCart = async function(){
   try{
     const cart = await axios.get("/cartItems");
    
-
     for (let i = 0; i < cart.data.length; i++) {
       const mainDiv = document.createElement("div");
       const leftDiv = document.createElement("div");
+      const imgDiv = document.createElement("div");
+      const infoDiv = document.createElement("div");
       const rightDiv = document.createElement("div");
+      const botDiv = document.createElement("div");
+      const qDiv = document.createElement("div");
       const title = document.createElement("h2");
       const cat = document.createElement("p");
+      const quant = document.createElement("p");
       const price = document.createElement("p");
+      const tPrice = document.createElement("p");
       const img = document.createElement("img");
+      const rBtn = document.createElement("btn");
+      const hr = document.createElement("hr");
 
       title.append(cart.data[i].name)
+      quant.append(cart.data[i].quantity)
       cat.append(cart.data[i].category)
-      price.append(`${cart.data[i].price}`)
+      price.append(`$${((cart.data[i].price * 100) / 100).toFixed(2)}/ea`)
       img.src = cart.data[i].img;
-      leftDiv.append(img)
-      leftDiv.append(title)
-      rightDiv.append(price)
+
+      tPrice.append(`$${(cart.data[i].price * cart.data[i].quantity).toFixed(2)}`)
+
+      rBtn.append("Remove")
+
+      imgDiv.append(img)
+
+      infoDiv.append(title)
+      infoDiv.append(price)
+
+      leftDiv.append(imgDiv)
+      leftDiv.append(infoDiv)
+
+      rightDiv.append(tPrice)
+
+      qDiv.append(quant)
+      botDiv.append(qDiv)
+      botDiv.append(rBtn)
+
       mainDiv.append(leftDiv)
       mainDiv.append(rightDiv)
+
       cartDisplay.append(mainDiv)
+      cartDisplay.append(botDiv)
+      cartDisplay.append(hr)
 
 
       mainDiv.classList.add("flex")
       mainDiv.classList.add("justify-between")
+
+      botDiv.classList.add("flex")
+      botDiv.classList.add("flex-row-reverse")
+      botDiv.classList.add("justify-start")
+
 
       leftDiv.classList.add("flex")
 
       rightDiv.classList.add("flex")
 
       img.classList.add("h-36")
+      img.classList.add("portrait:h-20")
+      img.classList.add("portrait:min-w-20")
 
-      title.classList.add("font-bold");
+      
       title.classList.add("pt-4");
       title.classList.add("pl-4");
-      title.classList.add("text-xl");
+      title.classList.add("text-lg");
+ 
+      price.classList.add("pl-4");
+      price.classList.add("text-base-300");
+
+      tPrice.classList.add("font-bold");
+      tPrice.classList.add("text-xl")
+      tPrice.classList.add("portrait:text-lg");
+      tPrice.classList.add("pt-5");
+
+      rBtn.classList.add("link")
+      rBtn.classList.add("link-hover")
+      rBtn.classList.add("mr-4")
 
     }
    
@@ -84,16 +135,41 @@ const loadCart = async function(){
 
 }
 
+const finTotalDis = function(sub){
+    let subtotal = sub
+    numSub = sub
+    let subDel = subtotal + 7.99
+    let subPic = subtotal 
+
+    if(delivery.checked){
+      taxes.innerText = `$${(((0.13 * subDel) * 100) / 100).toFixed(2)}`;
+      finTotal.innerText = `$${(((1.13 * subDel) * 100) / 100).toFixed(2)}`;
+    } else {
+      taxes.innerText = `$${(((0.13 * subPic) * 100) / 100).toFixed(2)}`;
+      finTotal.innerText = `$${(((1.13 * subPic) * 100) / 100).toFixed(2)}`;
+    }
+}
+
+
 window.addEventListener("load", async function () {
   let items = await getCartInfo();
   try {
     subtotalItems.innerText = `(${items[0]} Items)`;
     totalItems.innerText = `(${items[0]} Items)`;
-    subtotal.innerText = `$${(Math.round(items[1] * 100) / 100).toFixed(2)}`;
+    subtotal.innerText = `$${((items[1] * 100) / 100).toFixed(2)}`;
+    finTotal.innerText = `$${((items[1] * 100) / 100).toFixed(2)}`;
+    finTotalDis(items[1])
   } catch (e) {
     console.log(e);
   }
   cartDisplay.innerHTML = '';
   await loadCart()
-
 });
+
+delivery.addEventListener("change", function(){
+  finTotalDis(numSub)
+})
+
+pickup.addEventListener("change", function(){
+  finTotalDis(numSub)
+})
