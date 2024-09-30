@@ -9,7 +9,9 @@ const cartSchema = new mongoose.Schema({
         type:Number
 
     },
-    
+    price:{
+        type:Number
+    }
 })
 
 const Cart = mongoose.model("Cart", cartSchema);

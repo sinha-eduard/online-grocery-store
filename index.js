@@ -106,8 +106,14 @@ app.get("/products/:id", async (req, res) => {
 
 app.post("/cart", async (req, res) => {
   try {
-    const item = new Cart(req.body);
+    const product = req.body.product
+    const quantity = req.body.quantity
+    const pro = await Product.findById(product);
+    const price = pro.price
+
+    const item = new Cart({product:product, quantity:quantity, price:price});
     await item.save();
+    res.end()
   } catch (e) {
     res.redirect("/404");
   }
@@ -143,6 +149,6 @@ app.get("/*", (req, res) => {
 });
 
 app.listen(3000, async () => {
- await Cart.deleteMany({})
+ //await Cart.deleteMany({})
   console.log("App is listening PORT3000");
 });
