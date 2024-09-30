@@ -110,8 +110,11 @@ app.post("/cart", async (req, res) => {
     const quantity = req.body.quantity
     const pro = await Product.findById(product);
     const price = pro.price
+    const name = pro.name
+    const cat = pro.category
+    const img = pro.img
 
-    const item = new Cart({product:product, quantity:quantity, price:price});
+    const item = new Cart({product:product, quantity:quantity, price:price, name:name, category:cat, img:img});
     await item.save();
     res.end()
   } catch (e) {

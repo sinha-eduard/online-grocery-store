@@ -11,7 +11,19 @@ const cartSchema = new mongoose.Schema({
     },
     price:{
         type:Number
-    }
+    },
+    name:{
+        type:String,
+        required: true
+    },
+    category: {
+        type: String,
+        lowecase : true,
+        enum: ['fruit', 'vegetable', 'dairy', 'baked', 'meat', 'seafood']
+    },
+    img:{
+        type:String
+    },
 })
 
 const Cart = mongoose.model("Cart", cartSchema);
