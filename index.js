@@ -131,11 +131,24 @@ app.get("/cartItems", async (req, res) => {
   res.json(cart);
 });
 
+app.get("/cartItems/:id", async (req, res) => {
+  const item = await Cart.findById(req.params.id);
+  res.json(item);
+});
+
 app.put("/cartItems", async (req, res) => {
     const item = await Cart.findById(req.body.cartId)
     let q = 1+ item.quantity
     await Cart.findByIdAndUpdate(req.body.cartId, {quantity:q});
-    res.end()
+    res.sendStatus(200).end()
+});
+
+app.put("/cartItemsRemove", async (req, res) => {
+  const item = await Cart.findById(req.body.cartId)
+  let q = item.quantity -1
+
+  await Cart.findByIdAndUpdate(req.body.cartId, {quantity:q});
+  res.sendStatus(200).end()
 });
 
 app.delete("/cartItems/:id", async (req, res) => {
