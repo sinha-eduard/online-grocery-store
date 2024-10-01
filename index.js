@@ -138,6 +138,15 @@ app.put("/cartItems", async (req, res) => {
     res.end()
 });
 
+app.delete("/cartItems/:id", async (req, res) => {
+  const {id} = req.params
+  await Cart.findByIdAndDelete(id)
+  // res.redirect(`/cart`)
+
+  console.log("called")
+  res.sendStatus(200).end
+});
+
 app.get("/productData", async (req, res) => {
     const pro = await Product.find({});
     res.json(pro);

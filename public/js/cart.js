@@ -52,6 +52,7 @@ const loadCart = async function(){
       const infoDiv = document.createElement("div");
       const rightDiv = document.createElement("div");
       const botDiv = document.createElement("div");
+      const parentDisplay = document.createElement("div");
       const qDiv = document.createElement("div");
       const title = document.createElement("h2");
       const cat = document.createElement("p");
@@ -89,9 +90,11 @@ const loadCart = async function(){
       mainDiv.append(leftDiv)
       mainDiv.append(rightDiv)
 
-      cartDisplay.append(mainDiv)
-      cartDisplay.append(botDiv)
-      cartDisplay.append(hr)
+      parentDisplay.append(mainDiv)
+      parentDisplay.append(botDiv)
+      parentDisplay.append(hr)
+      cartDisplay.append(parentDisplay)
+      
 
 
       mainDiv.classList.add("flex")
@@ -100,6 +103,7 @@ const loadCart = async function(){
       botDiv.classList.add("flex")
       botDiv.classList.add("flex-row-reverse")
       botDiv.classList.add("justify-start")
+      botDiv.classList.add("mb-4")
 
 
       leftDiv.classList.add("flex")
@@ -126,6 +130,8 @@ const loadCart = async function(){
       rBtn.classList.add("link")
       rBtn.classList.add("link-hover")
       rBtn.classList.add("mr-4")
+      rBtn.id = "removeBtn"
+      rBtn.name = cart.data[i]._id
 
     }
    
@@ -150,8 +156,7 @@ const finTotalDis = function(sub){
     }
 }
 
-
-window.addEventListener("load", async function () {
+const loadPrices = async function(){
   let items = await getCartInfo();
   try {
     subtotalItems.innerText = `(${items[0]} Items)`;
@@ -162,8 +167,25 @@ window.addEventListener("load", async function () {
   } catch (e) {
     console.log(e);
   }
+}
+
+window.addEventListener("load", async function () {
+  loadPrices()
   cartDisplay.innerHTML = '';
   await loadCart()
+  
+  const rbtn = document.querySelectorAll("#removeBtn");
+  rbtn.forEach(element => {
+    element.addEventListener("click", async function(){
+      element.parentElement.parentElement.remove()
+      await axios({
+        method: "delete",
+        url: `/cartItems/${element.name}`
+      });
+      await loadPrices()
+    })
+  });
+
 });
 
 delivery.addEventListener("change", function(){
