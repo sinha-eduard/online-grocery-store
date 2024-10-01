@@ -6,6 +6,9 @@ const cartDisplay = document.querySelector("#cart-body");
 const finTotal = document.querySelector("#final-total");
 const delivery = document.querySelector("#delivery");
 const pickup = document.querySelector("#pickup");
+const checkout = document.querySelector("#checkout");
+const checkoutDiv = document.querySelector("#checkout-text");
+const closeBtn = document.querySelector("#close");
 let numSub = 0;
 
 const getCartInfo = async function () {
@@ -169,10 +172,9 @@ const finTotalDis = function (sub) {
   numSub = sub;
   let subDel = subtotal + 7.99;
   let subPic = subtotal;
-  if(subtotal == 0){
-    subDel = subtotal
+  if (subtotal == 0) {
+    subDel = subtotal;
   }
-  
 
   if (delivery.checked) {
     taxes.innerText = `$${((0.13 * subDel * 100) / 100).toFixed(2)}`;
@@ -191,6 +193,76 @@ const loadPrices = async function () {
     subtotal.innerText = `$${((items[1] * 100) / 100).toFixed(2)}`;
     finTotal.innerText = `$${((items[1] * 100) / 100).toFixed(2)}`;
     finTotalDis(items[1]);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const checkoutText = async function () {
+  checkoutDiv.innerHTML = "";
+  try {
+    const cart = await axios.get("/cartItems");
+    const mainText = document.createElement("p");
+    const pickupDel = document.createElement("p");
+    const list = document.createElement("ul");
+
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    for (let i = 0; i < cart.data.length; i++) {
+      totalItems = totalItems + cart.data[i].quantity;
+      totalPrice = totalPrice + cart.data[i].quantity * cart.data[i].price;
+      const items = document.createElement("li");
+      items.append(`(${cart.data[i].quantity}) ${cart.data[i].name}`);
+      list.append(items);
+    }
+
+    if (cart.data.length == 0) {
+      mainText.innerHTML =
+        "There Are No Items In Your Cart. <br> Please Add Items To Checkout.";
+      checkoutDiv.append(mainText);
+
+      checkoutDiv.append(pickupDel);
+    } else {
+      if (delivery.checked) {
+        mainText.append(
+          `You Purchased ${totalItems} Item(s) For $${(
+            (1.13 * (totalPrice + 7.99) * 100) /
+            100
+          ).toFixed(2)}`
+        );
+
+        pickupDel.append("Your Order Will Be Out For Delivery Soon");
+      }
+      if (pickup.checked) {
+        mainText.append(
+          `You Purchased ${totalItems} Item(s) For $${(
+            (1.13 * totalPrice * 100) /
+            100
+          ).toFixed(2)}`
+        );
+
+        pickupDel.append("Your Order Will Be Available For Pickup Soon");
+      }
+      checkoutDiv.append(mainText);
+      checkoutDiv.append(list);
+      checkoutDiv.append(pickupDel);
+    }
+
+    list.classList.add("ml-4");
+    list.classList.add("card");
+    list.classList.add("shadow-xl");
+    list.classList.add("w-1/2");
+    list.classList.add("portrait:w-full");
+    list.classList.add("portrait:ml-0");
+    list.classList.add("p-4");
+
+    mainText.classList.add("pt-4");
+    mainText.classList.add("pb-4");
+    mainText.classList.add("text-lg");
+
+    pickupDel.classList.add("pt-6");
+    pickupDel.classList.add("text-lg");
   } catch (e) {
     console.log(e);
   }
@@ -233,9 +305,9 @@ window.addEventListener("load", async function () {
         element.parentElement.children[1].children[0].innerText =
           cart.data.quantity;
 
-          if (cart.data.quantity > 1) {
-            element.parentElement.children[2].removeAttribute("disabled");
-          }
+        if (cart.data.quantity > 1) {
+          element.parentElement.children[2].removeAttribute("disabled");
+        }
 
         element.parentElement.parentElement.children[0].children[1].children[0].innerText = `$${(
           cart.data.price * cart.data.quantity
@@ -283,4 +355,17 @@ delivery.addEventListener("change", function () {
 
 pickup.addEventListener("change", function () {
   finTotalDis(numSub);
+});
+
+checkout.addEventListener("click", function () {
+  checkoutText();
+});
+
+closeBtn.addEventListener("click", async function () {
+  try {
+    await axios.get(`/cartFin`);
+    window.location.href = "/home";
+  } catch (e) {
+    console.log(e);
+  }
 });

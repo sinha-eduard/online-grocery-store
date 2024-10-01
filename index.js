@@ -146,7 +146,6 @@ app.put("/cartItems", async (req, res) => {
 app.put("/cartItemsRemove", async (req, res) => {
   const item = await Cart.findById(req.body.cartId)
   let q = item.quantity -1
-
   await Cart.findByIdAndUpdate(req.body.cartId, {quantity:q});
   res.sendStatus(200).end()
 });
@@ -163,6 +162,11 @@ app.delete("/cartItems/:id", async (req, res) => {
 app.get("/productData", async (req, res) => {
     const pro = await Product.find({});
     res.json(pro);
+  });
+
+  app.get("/cartFin", async (req, res) => {
+    await Cart.deleteMany({}) 
+    res.sendStatus(200).end
   });
 
 app.get("/404", (req, res) => {
