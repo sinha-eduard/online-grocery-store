@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const uri = "mongodb+srv://vercel-admin-user:J72T0CCgBR6R4EP6@store.hzgmd.mongodb.net/?retryWrites=true&w=majority&appName=store";
