@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const Product = require("./models/product");
+const uri = "mongodb+srv://storeadmin:nIFf0Zbt4dTWGkWV@store.hzgmd.mongodb.net/?retryWrites=true&w=majority&appName=store";
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
 mongoose
-  .connect("mongodb://localhost:27017/groceryStore")
+  .connect(uri, clientOptions)
   .then(() => {
     console.log("Mongoose Connection Open");
   })

@@ -3,12 +3,15 @@ const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
+const uri = "mongodb+srv://storeadmin:nIFf0Zbt4dTWGkWV@store.hzgmd.mongodb.net/?retryWrites=true&w=majority&appName=store";
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
+
 
 const Product = require("./models/product");
 const Cart = require("./models/cartItems");
 
 mongoose
-  .connect("mongodb://localhost:27017/groceryStore")
+  .connect(uri, clientOptions)
   .then(() => {
     console.log("Mongoose Connection Open");
   })

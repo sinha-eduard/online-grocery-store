@@ -2315,16 +2315,6 @@ html {
   background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
 }
 
-.bg-base-300 {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
-}
-
-.bg-base-200 {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
-}
-
 .fill-current {
   fill: currentColor;
 }
@@ -2351,6 +2341,10 @@ html {
   padding-bottom: 1rem;
 }
 
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
 .pl-2 {
   padding-left: 0.5rem;
 }
@@ -2369,14 +2363,6 @@ html {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
-}
-
-.pr-4 {
-  padding-right: 1rem;
 }
 
 .pt-6 {
@@ -2573,12 +2559,12 @@ html {
     visibility: collapse;
   }
 
-  .portrait\:mt-4 {
-    margin-top: 1rem;
-  }
-
   .portrait\:ml-0 {
     margin-left: 0px;
+  }
+
+  .portrait\:mt-4 {
+    margin-top: 1rem;
   }
 
   .portrait\:inline-flex {
@@ -2603,10 +2589,6 @@ html {
 
   .portrait\:w-full {
     width: 100%;
-  }
-
-  .portrait\:w-1\/2 {
-    width: 50%;
   }
 
   .portrait\:min-w-20 {
