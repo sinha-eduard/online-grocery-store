@@ -181,3 +181,5 @@ app.listen(3000, async () => {
  //await Cart.deleteMany({})
   console.log("App is listening PORT3000");
 });
+
+module.exports = app;
