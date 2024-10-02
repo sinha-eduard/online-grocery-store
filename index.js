@@ -10,7 +10,8 @@ const clientOptions = { serverApi: { version: '1', strict: true, deprecationErro
 const Product = require("./models/product");
 const Cart = require("./models/cartItems");
 
-mongoose
+const connectDB = async function(){
+  await mongoose
   .connect(uri, clientOptions)
   .then(() => {
     console.log("Mongoose Connection Open");
@@ -19,7 +20,9 @@ mongoose
     console.log("Mongoose Connection Error");
     console.log(e);
   });
+}
 
+connectDB()
 
   
 
@@ -31,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(async (req, res, next) => {
-  let count = 5//await Cart.countDocuments({});
+  let count = await Cart.countDocuments({});
   req.cartCount = count;
   next();
 });
