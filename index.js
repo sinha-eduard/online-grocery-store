@@ -10,7 +10,8 @@ const clientOptions = { serverApi: { version: '1', strict: true, deprecationErro
 const Product = require("./models/product");
 const Cart = require("./models/cartItems");
 
-const connectDB = async function(){
+(async () =>{
+  try{
   await mongoose
   .connect(uri, clientOptions)
   .then(() => {
@@ -20,9 +21,12 @@ const connectDB = async function(){
     console.log("Mongoose Connection Error");
     console.log(e);
   });
+} catch(e){
+  console.log(e)
 }
+})();
 
-await connectDB()
+
 
 
 app.engine("ejs", ejsMate);
