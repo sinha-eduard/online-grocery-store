@@ -3,16 +3,14 @@ const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
-const uri = "mongodb+srv://storeadmin:nIFf0Zbt4dTWGkWV@store.hzgmd.mongodb.net/?retryWrites=true&w=majority&appName=store";
+const uri = "mongodb+srv://vercel-admin-user:J72T0CCgBR6R4EP6@store.hzgmd.mongodb.net/?retryWrites=true&w=majority&appName=store";
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
 
 const Product = require("./models/product");
 const Cart = require("./models/cartItems");
 
-(async () =>{
-  try{
-  await mongoose
+mongoose
   .connect(uri, clientOptions)
   .then(() => {
     console.log("Mongoose Connection Open");
@@ -21,13 +19,9 @@ const Cart = require("./models/cartItems");
     console.log("Mongoose Connection Error");
     console.log(e);
   });
-} catch(e){
-  console.log(e)
-}
-})();
 
 
-
+  
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
