@@ -22,9 +22,8 @@ const connectDB = async function(){
   });
 }
 
-connectDB()
+await connectDB()
 
-  
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
