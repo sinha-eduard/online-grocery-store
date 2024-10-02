@@ -20,6 +20,9 @@ mongoose
     console.log(e);
   });
 
+
+  
+
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", "./public/views");
@@ -28,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(async (req, res, next) => {
-  let count = await Cart.countDocuments({});
+  let count = 5//await Cart.countDocuments({});
   req.cartCount = count;
   next();
 });
