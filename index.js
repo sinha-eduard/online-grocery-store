@@ -3,8 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 //const uri = require("./db/dbPass")
-const uri = process.env.MONGODB_URI
-
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@store.hzgmd.mongodb.net/?retryWrites=true&w=majority&appName=store`;
+console.log(process.env.MONGO_USER)
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
 const Product = require("./models/product");
