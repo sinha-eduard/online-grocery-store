@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
+//const uri = require("./db/dbPass")
 const uri = process.env.MONGODB_URI
+
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
 const Product = require("./models/product");
