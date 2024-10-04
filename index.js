@@ -18,9 +18,6 @@ mongoose
     console.log(e);
   });
 
-
-  
-
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", "./public/views");
