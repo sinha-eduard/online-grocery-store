@@ -1,107 +1,158 @@
 <% layout('./layouts/boilerplate') %>
 
-
-
-
-
-
-
-
-
 <h1 class="text-3xl mb-4 mt-4">Shop By Category</h1>
 
-<section id="category-section" class="mt-4 flex flex-wrap justify-around w-2/3 gap-6">
-  <div id="fruits-card" class="card bg-base-100 max-w-80 ">
+<section
+  id="category-section"
+  class="mt-4 flex flex-wrap justify-around w-2/3 gap-6"
+>
+  <div id="fruits-card" class="card bg-base-100 max-w-80">
     <a href="/products?category=fruit">
-      <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=600" 
-      alt="fruits" class="mask mask-circle mt-4 h-8/10">
+      <img
+        src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=600"
+        alt="fruits"
+        class="mask mask-circle mt-4 h-8/10"
+      />
       <h2 class="text-center text-2xl p-2">Fuirts</h2>
     </a>
   </div>
 
-  <div id="vegetable-card" class="card bg-base-100 max-w-80 ">
+  <div id="vegetable-card" class="card bg-base-100 max-w-80">
     <a href="/products?category=vegetable">
-      
-      <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=600" 
-      alt="vegetable" class="mask mask-circle mt-4 h-8/10">
-    
+      <img
+        src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=600"
+        alt="vegetable"
+        class="mask mask-circle mt-4 h-8/10"
+      />
+
       <h2 class="text-center text-2xl p-2">Vegetables</h2>
-  </a>
-  </div>
-
-  <div id="dairy-card" class="card bg-base-100 max-w-80 ">
-    <a href="/products?category=dairy" >
-    <img src="https://media.istockphoto.com/id/910881428/photo/dairy-products-shot-on-rustic-wooden-table.jpg?b=1&s=612x612&w=0&k=20&c=kv9D6bdGF3mQz24nxRkc1ADkc0VigdW24yOFvYXLnpA=" 
-    alt="dairy" class="mask mask-circle mt-4 h-8/10">
-    <h2 class="text-center text-2xl p-2">Dairy</h2>
-  </a> 
-  </div>
-
-  <div id="baked-card" class="card bg-base-100 max-w-80">
-    <a href="/products?category=baked" >
-    <img src="https://images.pexels.com/photos/960662/pexels-photo-960662.jpeg?auto=compress&cs=tinysrgb&w=600" 
-    alt="baked" class="mask mask-circle mt-4 h-8/10">
-    <h2 class="text-center text-2xl p-2">Baked</h2>
     </a>
   </div>
 
-  <div id="meat-card" class="card bg-base-100 max-w-80 ">
+  <div id="dairy-card" class="card bg-base-100 max-w-80">
+    <a href="/products?category=dairy">
+      <img
+        src="https://media.istockphoto.com/id/910881428/photo/dairy-products-shot-on-rustic-wooden-table.jpg?b=1&s=612x612&w=0&k=20&c=kv9D6bdGF3mQz24nxRkc1ADkc0VigdW24yOFvYXLnpA="
+        alt="dairy"
+        class="mask mask-circle mt-4 h-8/10"
+      />
+      <h2 class="text-center text-2xl p-2">Dairy</h2>
+    </a>
+  </div>
+
+  <div id="baked-card" class="card bg-base-100 max-w-80">
+    <a href="/products?category=baked">
+      <img
+        src="https://images.pexels.com/photos/960662/pexels-photo-960662.jpeg?auto=compress&cs=tinysrgb&w=600"
+        alt="baked"
+        class="mask mask-circle mt-4 h-8/10"
+      />
+      <h2 class="text-center text-2xl p-2">Baked</h2>
+    </a>
+  </div>
+
+  <div id="meat-card" class="card bg-base-100 max-w-80">
     <a href="/products?category=meat">
-    <img src="https://images.pexels.com/photos/65175/pexels-photo-65175.jpeg?auto=compress&cs=tinysrgb&w=600" 
-    alt="baked" class="mask mask-circle mt-4 h-8/10">
-    <h2 class="text-center text-2xl p-2">Meats</h2>
+      <img
+        src="https://images.pexels.com/photos/65175/pexels-photo-65175.jpeg?auto=compress&cs=tinysrgb&w=600"
+        alt="baked"
+        class="mask mask-circle mt-4 h-8/10"
+      />
+      <h2 class="text-center text-2xl p-2">Meats</h2>
     </a>
   </div>
 
   <div id="sea-card" class="card bg-base-100 max-w-80">
     <a href="/products?category=seafood">
-    <img src="https://images.pexels.com/photos/229789/pexels-photo-229789.jpeg?auto=compress&cs=tinysrgb&w=600" 
-    alt="baked" class="mask mask-circle mt-4 h-8/10">
-    <h2 class="text-center text-2xl p-2">Sea Food</h2>
+      <img
+        src="https://images.pexels.com/photos/229789/pexels-photo-229789.jpeg?auto=compress&cs=tinysrgb&w=600"
+        alt="baked"
+        class="mask mask-circle mt-4 h-8/10"
+      />
+      <h2 class="text-center text-2xl p-2">Sea Food</h2>
     </a>
   </div>
 </section>
 
-<section id="coupon" class="flex w-full flex-col mt-16 mb-16"></div>
+<section id="coupon" class="flex w-full flex-col mt-16 mb-16">
   <div class="card bg-primary rounded-none grid h-20 place-items-center">
-      <p class="text-white text-xl p-2 text-center">From Farm to Table, We’ve Got You Covered!</p>
+    <p class="text-white text-xl p-2 text-center">
+      From Farm to Table, We’ve Got You Covered!
+    </p>
   </div>
 </section>
 
-<section id="all-products" class="w-2/3">
-  <h2 class="text-center mb-4 text-3xl">All Products</h2>
-  <ul class="carousel carousel-end rounded-box flex flex-wrap gap-3 justify-start">
-    <% for(let product of products){ %>
-    <li class="carousel-item">
-      <div class="card card-compact bg-base-100 w-56">
-        <a href="/products/<%=product.id%>">
-        <figure>
-          <img
-            src="<%=product.img %>"
-            alt="<%= product.name %>" />
-        </figure>
-      </a>
-        <div class="card-body">
-          <div class="card-actions justify-start">
-            <button id="add-to-cart-btn" name="<%=product.id%>" 
-              class="btn btn-primary rounded-full text-white"> + Add to Cart</button>
-          </div>
+<section class="flex flex-row justify-center flex-wrap">
+  <section id="menu" class="mr-8 mb-4 portrait:mr-0 portrait:w-full portrait:flex portrait:flex-col portrait:items-center">
+    <h2 class="text-left mb-4  text-3xl portrait:text-center">Catagories</h2>
+    <ul class="flex flex-col portrait:flex-row flex-wrap w-56 portrait:w-2/3 portrait:justify-center">
+      <li class="text-lg"><a href="/products?category=fruit" class="hover:text-primary">Fruits</a></li>
+      <hr class="w-4/5 portrait:hidden">
+      <div class="divider divider-horizontal m-0 landscape:hidden"></div>
+      <li class="text-lg"><a href="/products?category=vegetable" class="hover:text-primary">Vegetables</a></li>
+      <hr class="w-4/5 portrait:hidden">
+      <div class="divider divider-horizontal m-0 landscape:hidden"></div>
+      <li class="text-lg"><a href="/products?category=dairy" class="hover:text-primary">Dairy</a></li>
+      <hr class="w-4/5 portrait:hidden">
+      
+      <li class="text-lg"><a href="/products?category=baked" class="hover:text-primary">Baked</a></li>
+      <hr class="w-4/5 portrait:hidden">
+      <div class="divider divider-horizontal m-0 landscape:hidden"></div>
+      <li class="text-lg"><a href="/products?category=meat" class="hover:text-primary">Meats</a></li>
+      <hr class="w-4/5 portrait:hidden">
+      <div class="divider divider-horizontal m-0 landscape:hidden"></div>
+      <li class="text-lg"><a href="/products?category=seafood" class="hover:text-primary">Sea Food</a></li>
+    </ul>
+  </section>
+
+  <section id="all-products" class="w-2/3 portrait:w-full">
+    <h2 class="text-left mb-4 text-3xl portrait:text-center">
+      All Products
+    </h2>
+    <ul
+      class="carousel carousel-end rounded-box flex flex-wrap gap-3 justify-start portrait:justify-center"
+    >
+      <% for(let product of products){ %>
+      <li class="carousel-item">
+        <div class="card card-compact bg-base-100 w-56 portrait:w-36">
           <a href="/products/<%=product.id%>">
-          <h2 class="card-title">$<%= (Math.round(product.price * 100) / 100).toFixed(2) %></h2>
-          <p class="mb-2"><%= product.name %></p>
-          <p class="mb-2"> Category: <%= product.category %></p>
-          <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">
-            <p class="font-bold">Pickup</p>
+            <figure>
+              <img src="<%=product.img %>" alt="<%= product.name %>" />
+            </figure>
+          </a>
+          <div class="card-body">
+            <div class="card-actions justify-start">
+              <button
+                id="add-to-cart-btn"
+                name="<%=product.id%>"
+                class="btn btn-primary rounded-full text-white"
+              >
+                + Add to Cart
+              </button>
+            </div>
+            <a href="/products/<%=product.id%>">
+              <h2 class="card-title">
+                $<%= (Math.round(product.price * 100) / 100).toFixed(2) %>
+              </h2>
+              <p class="mb-2"><%= product.name %></p>
+              <p class="mb-2">Category: <%= product.category %></p>
+              <div
+                class="badge bg-blue-600/25 text-primary rounded-none block mt-1"
+              >
+                <p class="font-bold">Pickup</p>
+              </div>
+              <div
+                class="badge bg-blue-600/25 text-primary rounded-none block mt-1"
+              >
+                <p class="font-bold">Delivery</p>
+              </div>
+            </a>
           </div>
-          <div class="badge bg-blue-600/25 text-primary rounded-none block mt-1">
-            <p class="font-bold">Delivery</p>
-          </div>
-        </a>
         </div>
-      </div>
-    </li>
-    <% }%>
-  </ul>
+      </li>
+      <% }%>
+    </ul>
+  </section>
 </section>
 
 <!-- <p>Sort by Category</p>

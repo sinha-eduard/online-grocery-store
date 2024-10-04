@@ -94,11 +94,11 @@
 >
   <h2 class="text-center mb-4 text-3xl">Customers Also Bought</h2>
   <ul
-    class="carousel carousel-end rounded-box flex flex-wrap gap-3 justify-center"
+    class="carousel carousel-end rounded-box flex flex-wrap gap-3 justify-center portrait:justify-center"
   >
     <% for(let product of category){ %>
     <li class="carousel-item">
-      <div class="card card-compact bg-base-100 w-56">
+      <div class="card card-compact bg-base-100 w-36">
         <a href="/products/<%=product.id%>">
           <figure>
             <img src="<%=product.img %>" alt="<%= product.name %>" />
